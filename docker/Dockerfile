@@ -1,5 +1,9 @@
 FROM r-base:4.4.1
 
+LABEL org.opencontainers.image.source=https://github.com/arneso-ssb/docker-rpython
+LABEL org.opencontainers.image.description="Container for running both python and R."
+LABEL org.opencontainers.image.licenses=MIT
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         git \
@@ -21,6 +25,7 @@ RUN apt-get update \
         pipx \
         python-is-python3 \
         python3 \
+        python3-dev \
         python3-pip \
         python3-poetry \
         python3-venv \
