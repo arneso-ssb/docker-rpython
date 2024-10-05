@@ -33,6 +33,8 @@ RUN apt-get update \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pipx install nox && pipx inject nox nox-poetry && pipx ensurepath
+
 WORKDIR /root
 
 RUN mkdir settings
