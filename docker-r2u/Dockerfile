@@ -11,6 +11,8 @@ RUN apt-get update \
         nano \
         pipx \
         python3-pip \
+        python3-poetry \
+        python3-venv \
         r-cran-dplyr \
         r-cran-gausssuppression \
         r-cran-httpgd \
@@ -22,10 +24,10 @@ RUN apt-get update \
     && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists/*
 
-# RUN R -e "remotes::install_github(c(\
-#    'statisticsnorway/ssb-metodebiblioteket', \
-#    'statisticsnorway/ssb-fellesr' \
-#    ))"   
-#
-# RUN pipx install nox && pipx inject nox nox-poetry && pipx ensurepath
+RUN R -e "remotes::install_github(c(\
+   'statisticsnorway/ssb-metodebiblioteket', \
+   'statisticsnorway/ssb-fellesr' \
+   ))"   
+
+RUN pipx ensurepath && pipx install nox && pipx inject nox nox-poetry
 
